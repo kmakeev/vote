@@ -1,0 +1,29 @@
+{% extends "email/base.html" %}
+{% block register %}
+<table class="body-wrap">
+    <tr>
+        <td class="container">
+            <!-- Message start -->
+            <table>
+                <tr>
+                    <td align="center" class="masthead">
+
+                        <h1>Уважаемый {{ fio }}!</h1>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="content">
+
+                        <h2>Вас пригласили на регистрацию !</h2>
+                        <p> Для прохождения регистрации необходимо перейти по ссылке</p>
+                        <a href="{{ url }}" class="button-reg" target="_blank">Зарегистрироваться</a>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+</body>
+{% endblock %}
