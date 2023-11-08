@@ -46,8 +46,11 @@ class VoteBallotSerializer(serializers.ModelSerializer):
                             if answer:
                                 instance.answer = answer
                                 instance.save()
-                new_total_count = VoteBallot.objects.filter(votingprocess__voteBallot=instance,
-                                                                    votingprocess__voteBallot__answer=not None).count()
+                # total_count_filter = ~Q(voteBallot__answer=None)
+                # process = VotingProcess.objects.filter(pk=pk).annotate(
+                #    total_count=Count('voteBallot__answer', filter=total_count_filter)).first()
+                new_total = VoteBallot.objects.filter(votingprocess__voteBallot=instance, answer__isnull=False)
+                new_total_count = new_total.count()
                 voteProc = VoteProc()
                 channel_layer = channels.layers.get_channel_layer()
                 voteProc.totalCount = new_total_count
@@ -161,6 +164,7 @@ class AdminRegistrationProcessSerializer(serializers.ModelSerializer):
             regProc = RegProc()
             channel_layer = channels.layers.get_channel_layer()
             regProc.isStopping = False
+            regProc.totalCount = instance.total_count
             async_to_sync(channel_layer.group_send)('all', {'type': 'test',
                                                             'message': {'regProc': regProc.__dict__}})
             send_register_info_task.s({'registrrationprocess_id': instance.id})()

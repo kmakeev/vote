@@ -33,8 +33,11 @@ class VotingNotStarted extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [
-        Text('Необходимо выбрать один из вариантов',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
+        const Padding(
+          padding: EdgeInsets.all(10),
+          child: Text('Необходимо выбрать один из вариантов',
+              style: TextStyle(color: Colors.white, fontSize: 20)),
+        ),
         SizedBox(
             height: 300,
             width: 400,
@@ -290,13 +293,6 @@ class VotingClockWidget extends StatelessWidget {
                 votingstate.msValue!.isStarted != false &&
                 indexVotingProcess == votingstate.indexActiveVotingProcess) {
               print('Go Start or End from Voting');
-              context
-                  .read<VotingProcessAdminBloc>()
-                  .add(StartMillisecondsVotingChanged(
-                      msValue: Difference(
-                    isStarted: false,
-                    value: DateTime.now(),
-                  )));
               if (votingstate
                           .votingProcesses[votingstate.indexActiveVotingProcess]
                           .start_date ==
@@ -320,6 +316,13 @@ class VotingClockWidget extends StatelessWidget {
                     .read<VotingProcessAdminBloc>()
                     .add(CompleteVotingProcessEvent());
               }
+              context
+                  .read<VotingProcessAdminBloc>()
+                  .add(StartMillisecondsVotingChanged(
+                      msValue: Difference(
+                    isStarted: false,
+                    value: DateTime.now(),
+                  )));
             } else {
               context.read<VotingProcessAdminBloc>().add(
                   StartMillisecondsVotingChanged(

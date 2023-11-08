@@ -166,7 +166,7 @@ BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/3'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@mail.ru'
+DEFAULT_FROM_EMAIL = 'noreply@vsrf.ru'
 EMAIL_USE_TLS = False
 EMAIL_HOST = 'mail'
 EMAIL_HOST_USER = ''
@@ -181,6 +181,6 @@ CSRF_USE_SESSION = True
 CSRF_COOKIE_HTTPONLY = False
 
 SETTINGS_DEBUG_IOS = False
-DEBUG_IOS_ID_USER = 23
+DEBUG_IOS_ID_USER = 1
 
 

@@ -43,7 +43,7 @@ class WebsocketManager {
       try {
         var _message = new Message.fromJson(json.decode(msg));
         if (_message.regProc != null) {
-          print(_message.regProc!.totalCount);
+          print('WS manager detect ReGProG changed. Total count - ${_message.regProc!.totalCount}');
           context
               .read<RegistrationProcessUserBloc>()
               .add(WSMessageChanged(message: _message));
@@ -51,7 +51,7 @@ class WebsocketManager {
               .read<RegistrationProcessAdminBloc>()
               .add(WSMessageAdminChanged(message: _message));
         } else if (_message.voteProc != null) {
-          print(_message.voteProc!.id_voting);
+          print('WS manager detect ReGVote changed. Total count - ${_message.voteProc!.totalCount}');
           context
               .read<VotingProcessAdminBloc>()
               .add(WSMessageVotingAdminChanged(message: _message));

@@ -32,8 +32,11 @@ class VotingNotStarted extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [
-        Text('Необходимо выбрать один из вариантов',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
+        const Padding(
+          padding: EdgeInsets.all(10),
+          child: Text('Необходимо выбрать один из вариантов',
+              style: TextStyle(color: Colors.white, fontSize: 20)),
+        ),
         SizedBox(
             height: 300,
             width: 400,
@@ -336,8 +339,11 @@ class VotingInProgress extends StatelessWidget {
               : Container(
                   height: 38,
                 ),
-          Text('Необходимо выбрать один из вариантов',
-              style: TextStyle(color: Colors.white, fontSize: 20)),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Text('Необходимо выбрать один из вариантов',
+                style: TextStyle(color: Colors.white, fontSize: 20)),
+          ),
           SizedBox(
               height: 300,
               width: 400,
@@ -423,9 +429,8 @@ class VotingInProgress extends StatelessWidget {
                               answer == null)
                           ? null
                           : () {
-                              context
-                                  .read<VoteProcessUserBloc>()
-                                  .add(SubmitVoteBallotFromVotingProcessEvent());
+                              context.read<VoteProcessUserBloc>().add(
+                                  SubmitVoteBallotFromVotingProcessEvent());
 
                               /// Странным образом чтение идет до обновления есть предложение объеденить два BLOCа в один
                               ///

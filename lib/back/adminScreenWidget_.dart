@@ -41,8 +41,10 @@ class VotingNotStarted extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [
-        Text('Необходимо выбрать один из вариантов',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
+        const Padding(
+            padding: EdgeInsets.all(10),
+            child: Text('Необходимо выбрать один из вариантов',
+                style: TextStyle(color: Colors.white, fontSize: 20))),
         SizedBox(
             height: 300,
             width: 400,

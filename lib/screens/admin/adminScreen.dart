@@ -29,7 +29,7 @@ class AdminScreen extends StatelessWidget {
       if ((mainstate is ShowUserScreenState) &&
           (loadingstatus is LoadedState) &&
 
-          ///Необходио для выхода состояния из InitState
+          ///Необходимо для выхода состояния из InitState
           // (state.meeting!.isRequiredRegistration) &&
           (registrationProcessState.requestStatus is InitState)) {
         context.read<RegistrationProcessAdminBloc>().add(
